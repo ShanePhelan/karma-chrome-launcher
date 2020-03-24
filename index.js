@@ -46,7 +46,8 @@ var ChromeBrowser = function (baseBrowserDecorator, args) {
       // and we need disable-renderer-backgrounding too
       // see https://github.com/karma-runner/karma-chrome-launcher/issues/123
       '--disable-renderer-backgrounding',
-      '--disable-device-discovery-notifications'
+      '--disable-device-discovery-notifications',
+      '--autoplay-policy=no-user-gesture-required'
     ].concat(flags, [url])
   }
 }
@@ -170,7 +171,8 @@ function headlessGetOptions (url, args, parent) {
   var mergedArgs = parent.call(this, url, args).concat([
     '--headless',
     '--disable-gpu',
-    '--disable-dev-shm-usage'
+    '--disable-dev-shm-usage',
+    '--autoplay-policy=no-user-gesture-required'
   ])
 
   var isRemoteDebuggingFlag = function (flag) {
